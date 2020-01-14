@@ -1,0 +1,2 @@
+0000||Room could not be found
+0001||Room is closed
