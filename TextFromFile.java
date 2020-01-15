@@ -30,7 +30,7 @@ public class TextFromFile {
 
     // Splits the string and adds it to the map
     private void SplitString(String line) {
-        String[] splittedLine = line.split("||");
+        String[] splittedLine = line.split("-");
         AddLineToDictionary(Integer.parseInt(splittedLine[0]), splittedLine[1]);
     }
 
