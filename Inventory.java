@@ -15,24 +15,22 @@ public class Inventory {
     public void ShowInventory() {
         int weight = 0;
         System.out.println("==============Inventory==============");
+        int pos = 0;
         for (Item item : inventory) {
-            System.out.println("  " + item.GetName() + " weighs: " + item.GetWeigth());
+            System.out.println("  " + "[" + pos + "] " + item.GetName() + " weighs: " + item.GetWeigth());
             weight += item.GetWeigth();
+            pos++;
         }
         System.out.println("=====================================");
         System.out.println("  Carrying: " + weight + " out of " + strength);
         System.out.println("");
     }
 
-    // Creates a random roomnumber for items (between 0(incl.) and 6(excl.))
-    private int RandomizeRoom() {
-        Random random = new Random();
-        return random.nextInt(6);
-    }
-
-    // Adds an item to the inventory when the player picks it up
+    // Adds an item to the inventory and removes it from the allItems list when the
+    // player picks it up
     // If it is too heavy the player can't pick it up
     public void AddItemToInventory(Item item) {
+
         int weight = 0;
         for (Item invItem : inventory) {
             weight += invItem.GetWeigth();
@@ -42,8 +40,28 @@ public class Inventory {
             TextFromFile.GetLine(0);
         } else {
             inventory.add(item);
+            allItems.remove(item);
             ShowInventory();
         }
+    }
+
+    public void RemoveItemFromInventory(int itemNumber, int roomNumber) {
+        if (itemNumber < 0 || itemNumber > inventory.size()) {
+            System.out.println("Item does not exist");
+        } else {
+            // Add it to the allItems with the updated roomnumber
+            Item temp = inventory.get(itemNumber);
+            temp.SetRoomNumber(roomNumber);
+            allItems.add(temp);
+            // Remove it from the inventory
+            inventory.remove(itemNumber);
+        }
+    }
+
+    // Creates a random roomnumber for items (between 0(incl.) and 6(excl.))
+    private int RandomizeRoom() {
+        Random random = new Random();
+        return random.nextInt(6);
     }
 
     // Creates all the valuable items that the player needs to finish the game
