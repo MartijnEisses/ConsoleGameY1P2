@@ -4,7 +4,7 @@ import java.io.*;
 // Reads the file and saves it to a list
 public class TextFromFile {
 
-    Map<Integer, String> textLines = new HashMap<Integer, String>();
+    private static Map<Integer, String> textLines = new HashMap<Integer, String>();
 
     public TextFromFile() {
         GetTextFromFile("textfile.txt");
@@ -15,8 +15,6 @@ public class TextFromFile {
             File file = new File(path); // Creates a new file instance
             FileReader fr = new FileReader(file); // Reads the file
             BufferedReader br = new BufferedReader(fr); // Creates a buffering character input stream
-            StringBuffer sb = new StringBuffer(); // Constructs a string buffer with no
-            // characters
             String line = "";
             while ((line = br.readLine()) != null) {
                 SplitString(line);
@@ -41,7 +39,7 @@ public class TextFromFile {
         textLines.put(key, value);
     }
 
-    public String GetLine(Integer key) {
+    public static String GetLine(Integer key) {
         if (textLines.containsKey(key)) {
             return textLines.get(key);
         } else

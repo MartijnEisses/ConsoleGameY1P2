@@ -1,2 +1,2 @@
-0-Room could not be found
-1-Room is closed
+0-You can't carry so much with you. Consider dropping something.
+1-Room is closed.

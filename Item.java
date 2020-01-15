@@ -1,9 +1,9 @@
 public class Item {
     private String name;
-    private Integer weight;
-    private Integer roomNumber;
+    private int weight;
+    private int roomNumber;
 
-    public Item(String name, Integer weight, Integer roomNumber) {
+    public Item(String name, int weight, int roomNumber) {
 
         this.name = name;
         this.weight = weight;
@@ -14,15 +14,15 @@ public class Item {
         return name;
     }
 
-    public Integer GetWeigth() {
+    public int GetWeigth() {
         return weight;
     }
 
-    public Integer GetRoomNumber() {
+    public int GetRoomNumber() {
         return roomNumber;
     }
 
-    public void SetRoomNumber(Integer roomNumber) {
+    public void SetRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
     }
 
