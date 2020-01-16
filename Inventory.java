@@ -102,7 +102,7 @@ public class Inventory {
     public void GetItemsInRoom(int roomNumber) {
         for (Item item : allItems) {
             if (item.GetRoomNumber() == roomNumber) {
-                System.out.println(item.GetName());
+                System.out.println("-  " + item.GetName());
             }
         }
     }

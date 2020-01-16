@@ -5,6 +5,7 @@ public class Rooms {
     private InputReader reader;
     private HashMap<String, Room> roomsMap;
     private TextFromFile lines;
+    private Inventory inventory;
     private Room one;
     private Room two;
     private Room three;
@@ -16,6 +17,7 @@ public class Rooms {
         reader = new InputReader();
         roomsMap = new HashMap<>();
         lines = new TextFromFile();
+        inventory = new Inventory();
         setRooms();
         addToMap();
     }
@@ -43,9 +45,11 @@ public class Rooms {
                 } else {
                     nextRoom();
                     System.out.println("You opened a door to the next room!");
+                    System.out.println("items in this room are:");
+                    inventory.GetItemsInRoom(currentRoom.getRoomNumber());
                 }
             } else {
-                System.out.println("Commands are:\n" + "Open door one\n" + "What room am i in?\n" + "QUIT");
+                Help();
             }
         }
         System.out.println("Thanks for playing!");
@@ -55,7 +59,10 @@ public class Rooms {
     }
 
     private void Help() {
-
+        System.out.println(lines.GetLine(5));
+        System.out.println(lines.GetLine(6));
+        System.out.println(lines.GetLine(7));
+        System.out.println(lines.GetLine(8));
     }
 
     private void setRooms() {
