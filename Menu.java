@@ -29,7 +29,11 @@ public class Menu
     //moet afgemaakt worden....verplicht
     public static void about(){
         clearConsole();
-        System.out.println("Dit is de about section");
+        System.out.println("Deze game is gemaakt door: ");
+        System.out.println("Martijn Eisses");
+        System.out.println("Hein Douwe Havik");
+        System.out.println("Martijn Hofstra");
+        System.out.println("Deze Text Based Game is gemaakt in Java");
     }
     
     //moet afgemaakt worden....verplicht
@@ -43,9 +47,9 @@ public class Menu
         printHeading(/*plek van character*/"");
         System.out.println("Choose an action:");
         System.out.println("-------------------");
-        System.out.println("(1) Continue on your journey");
-        System.out.println("(2) Character Info");
-        System.out.println("(3) Exit Game");
-        System.out.println("(4) About");
+        System.out.println("(1) Continue on your journey");//continue
+        System.out.println("(2) Character Info");//info
+        System.out.println("(3) Exit Game");//quit
+        System.out.println("(4) About");//about
     }
 }
