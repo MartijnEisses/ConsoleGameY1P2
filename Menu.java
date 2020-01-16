@@ -18,16 +18,17 @@ public class Menu
         System.out.println(title);
     }
 
-    //moet afgemaakt worden....optioneel
+    //Displays self-chosen playername
     public static void characterInfo(){
         clearConsole();
         printHeading("CHARACTER INFO");
-        System.out.println(consolegame.name);//hier moet de naam van player
+        System.out.println("Je naam is: " + consolegame.name);//hier moet de naam van player
     }
 
-    //moet afgemaakt worden....verplicht
+    //Displays About section
     public static void about(){
         clearConsole();
+        System.out.println("Hallo" + consolegame.name + ", dit is welkom in de about section van deze game.");
         System.out.println("Deze game is gemaakt door: ");
         System.out.println("Martijn Eisses");
         System.out.println("Hein Douwe Havik");
@@ -36,10 +37,11 @@ public class Menu
         System.out.println("Deze game is gemaakt in blok 2 van jaar 1.");
     }
 
-    //moet afgemaakt worden....verplicht
+    //Displaying end of game
     public static void Quit(){
         clearConsole();
-        System.out.println("Bedankt voor het spelen van de game");
+        System.out.println("Bedankt voor het spelen van de game.");
+        System.out.println("Hopelijk heb je van de game genoten.");
         System.out.println("");
         System.out.println("Deze game is gemaakt door: ");
         System.out.println("Martijn Eisses");
@@ -47,10 +49,9 @@ public class Menu
         System.out.println("Martijn Hofstra");
     }
 
-    //Print het menu.
+    //Prints menu.
     public static void printMenu(){
         clearConsole();
-        printHeading(/*plek van character*/"");
         System.out.println("Choose an action:");
         System.out.println("-------------------");
         System.out.println("(1) Continue on your journey");//continue
