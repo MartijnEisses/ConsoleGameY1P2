@@ -1,37 +1,51 @@
 
 /**
- * Write a description of class Quit here.
+ * Shows menu
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Martijn)
+ * @version (16-01-2019)
  */
 public class Menu
 {
-    public static void printSeperator(int n){
-        for(int i = 0; i < n; i++)
-            System.out.println("-");
-        System.out.println();
-    }
-
+    //clears the console
     public static void clearConsole(){
         for(int i=0; i < 100; i++)
             System.out.println();
     }
 
     public static void printHeading(String title){
-        printSeperator(30);
+        
         System.out.println(title);
-        printSeperator(30);
+        
+    }
+
+    //moet afgemaakt worden....optioneel
+    public static void characterInfo(){
+        clearConsole();
+        printHeading("CHARACTER INFO");
+        System.out.println(/*playername*/);//hier moet de naam van player
+    }
+    
+    //moet afgemaakt worden....verplicht
+    public static void about(){
+        clearConsole();
+        System.out.println("Dit is de about section");
+    }
+    
+    //moet afgemaakt worden....verplicht
+    public static void Quit(){
+        System.out.println("Dit was de game");
     }
 
     //Print het menu.
     public static void printMenu(){
         clearConsole();
-        printHeading("MENU");
+        printHeading(/*plek van character*/"");
         System.out.println("Choose an action:");
-        printSeperator(20);
+        System.out.println("-------------------");
         System.out.println("(1) Continue on your journey");
         System.out.println("(2) Character Info");
         System.out.println("(3) Exit Game");
+        System.out.println("(4) About");
     }
 }
