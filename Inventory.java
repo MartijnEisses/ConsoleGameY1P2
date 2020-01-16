@@ -45,7 +45,7 @@ public class Inventory {
         }
         // Cant add the item because the player isn't strong enough
         if (weight + item.GetWeigth() > strength) {
-            lines.GetLine(0);
+            System.out.println(lines.GetLine(0));
         } else {
             inventory.add(item);
             allItems.remove(item);
