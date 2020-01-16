@@ -1,3 +1,9 @@
+/*
+* Martijn Eisses
+* January 2020 
+* Create a Console Game
+*/
+
 public class Item {
     private String name;
     private int weight;

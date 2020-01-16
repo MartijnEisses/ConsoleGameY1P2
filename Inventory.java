@@ -1,3 +1,9 @@
+
+/*
+* Martijn Eisses
+* January 2020 
+* Create a Console Game
+*/
 import java.util.*;
 
 public class Inventory {
