@@ -7,6 +7,8 @@ import java.util.Scanner;
  */
 public class Menu
 {
+    static Scanner scanner = new Scanner(System.in);
+
     //clears the console
     public static void clearConsole(){
         for(int i=0; i < 100; i++)
@@ -26,7 +28,7 @@ public class Menu
     }
 
     //Displays About section
-    public static void about(){
+    public static void aboutSection(){
         clearConsole();
         System.out.println("Hallo" + consolegame.name + ", dit is welkom in de about section van deze game.");
         System.out.println("Deze game is gemaakt door: ");
@@ -37,8 +39,12 @@ public class Menu
         System.out.println("Deze game is gemaakt in blok 2 van jaar 1.");
     }
 
+    public static void continueJourney(){
+        System.out.println("Deze functionaliteit moet nog worden toegevoegd");
+    }
+
     //Displaying end of game
-    public static void Quit(){
+    public static void quitJourney(){
         clearConsole();
         System.out.println("Bedankt voor het spelen van de game.");
         System.out.println("Hopelijk heb je van de game genoten.");
@@ -47,9 +53,10 @@ public class Menu
         System.out.println("Martijn Eisses");
         System.out.println("Hein Douwe Havik");
         System.out.println("Martijn Hofstra");
+        consolegame.gameRunning = false;
     }
 
-    //Prints menu.
+    //Prints menu.!!De continue journey moet nog worden toegevoegd.
     public static void printMenu(){
         clearConsole();
         System.out.println("Choose an action:");
@@ -58,5 +65,14 @@ public class Menu
         System.out.println("(2) Character Info");//info
         System.out.println("(3) Exit Game");//quit
         System.out.println("(4) About");//about
+        if(scanner.next() == "1"){
+            continueJourney();
+        } else if(scanner.next() == "2"){
+            characterInfo();
+        } else if(scanner.next() == "3"){
+            quitJourney();
+        } else if(scanner.next() == "4"){
+            aboutSection();
+        }
     }
 }
