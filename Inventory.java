@@ -90,4 +90,12 @@ public class Inventory {
         Item crate = new Item("Crate", 3, RandomizeRoom());
         allItems.add(crate);
     }
+
+    public void GetItemsInRoom(int roomNumber) {
+        for (Item item : allItems) {
+            if (item.GetRoomNumber() == roomNumber) {
+                System.out.println(item.GetName());
+            }
+        }
+    }
 }
