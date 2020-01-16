@@ -11,13 +11,17 @@ public class consolegame {
         do {
             Menu.clearConsole();
             Menu.printHeading("what's your name?");
-            name = scanner.next();//
+            name = scanner.next();
         } while (!nameSet);
     }
 
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
+        Rooms rooms = new Rooms();
+
+        // Game loop
         while (gameRunning) {
+
             gameRunning = false;
         }
     }
