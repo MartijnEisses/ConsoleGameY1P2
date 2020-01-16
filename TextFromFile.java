@@ -34,14 +34,16 @@ public class TextFromFile {
 
     private void AddLineToDictionary(Integer key, String value) {
         if (textLines.containsKey(key)) {
-            System.out.println(key + "  Already exists");
+            return;
         }
         textLines.put(key, value);
     }
 
-    public static String GetLine(Integer key) {
+    public String GetLine(Integer key) {
         if (textLines.containsKey(key)) {
+
             return textLines.get(key);
+
         } else
             return "INCORRECT KEY";
     }

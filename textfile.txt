@@ -1,2 +1,9 @@
 0-You can't carry so much with you. Consider dropping something.
 1-Room is closed.
+2-Welcome to the game!
+3-You don't know how you got into this mess..
+4-But you sure do know that you want to get out of here as soon as possible!
+5-If doors are unlocked you're able to open them by typing: open door [doornumber]
+6-You can take a closer look at thing by typing: take a look at [item/place]
+7-You can use items by typing: use [itemname] at [where you want to use it]
+8-You're able to shut down the game at anytime by typing: quit

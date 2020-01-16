@@ -11,10 +11,12 @@ public class Inventory {
     public List<Item> allItems = new ArrayList<>(); // Holds all the items
     private List<Item> inventory = new ArrayList<>(); // Holds all the items of the player
     private int strength = 5; // The weigth that the player can carry
+    private TextFromFile lines;
 
     public Inventory() {
         CreateValuableItems();
         CreateWorthlessItems();
+        lines = new TextFromFile();
     }
 
     // Shows all the items currently in the inventory
@@ -43,7 +45,7 @@ public class Inventory {
         }
         // Cant add the item because the player isn't strong enough
         if (weight + item.GetWeigth() > strength) {
-            TextFromFile.GetLine(0);
+            lines.GetLine(0);
         } else {
             inventory.add(item);
             allItems.remove(item);

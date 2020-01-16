@@ -1,11 +1,10 @@
 import java.util.HashMap;
 
 public class Rooms {
-
     private Room currentRoom;
     private InputReader reader;
     private HashMap<String, Room> roomsMap;
-
+    private TextFromFile lines;
     private Room one;
     private Room two;
     private Room three;
@@ -16,12 +15,19 @@ public class Rooms {
     public Rooms() {
         reader = new InputReader();
         roomsMap = new HashMap<>();
+        lines = new TextFromFile();
         setRooms();
         addToMap();
     }
 
     public void play() {
-
+        System.out.println(lines.GetLine(2));
+        System.out.println(lines.GetLine(3));
+        System.out.println(lines.GetLine(4));
+        System.out.println(lines.GetLine(5));
+        System.out.println(lines.GetLine(6));
+        System.out.println(lines.GetLine(7));
+        System.out.println(lines.GetLine(8));
         boolean finished = false;
 
         while (!finished) {
@@ -42,10 +48,14 @@ public class Rooms {
                 System.out.println("Commands are:\n" + "Open door one\n" + "What room am i in?\n" + "QUIT");
             }
         }
-        System.out.println("Thx for playing!");
+        System.out.println("Thanks for playing!");
     }
 
     public void chooseDoor(int doorNumber) {
+    }
+
+    private void Help() {
+
     }
 
     private void setRooms() {
