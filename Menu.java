@@ -1,8 +1,8 @@
-
+import java.util.Scanner;
 /**
- * Shows menu
+ * Dit laat het menu van de game zien.
  *
- * @author (Martijn)
+ * @author (Martijn Hofstra)
  * @version (16-01-2019)
  */
 public class Menu
@@ -13,19 +13,18 @@ public class Menu
             System.out.println();
     }
 
+    //prints title... nodig voor method character info
     public static void printHeading(String title){
-        
         System.out.println(title);
-        
     }
 
     //moet afgemaakt worden....optioneel
     public static void characterInfo(){
         clearConsole();
         printHeading("CHARACTER INFO");
-        System.out.println(/*playername*/);//hier moet de naam van player
+        System.out.println(consolegame.name);//hier moet de naam van player
     }
-    
+
     //moet afgemaakt worden....verplicht
     public static void about(){
         clearConsole();
@@ -33,12 +32,19 @@ public class Menu
         System.out.println("Martijn Eisses");
         System.out.println("Hein Douwe Havik");
         System.out.println("Martijn Hofstra");
-        System.out.println("Deze Text Based Game is gemaakt in Java");
+        System.out.println("Deze Text Based Game is gemaakt in Java.");
+        System.out.println("Deze game is gemaakt in blok 2 van jaar 1.");
     }
-    
+
     //moet afgemaakt worden....verplicht
     public static void Quit(){
-        System.out.println("Dit was de game");
+        clearConsole();
+        System.out.println("Bedankt voor het spelen van de game");
+        System.out.println("");
+        System.out.println("Deze game is gemaakt door: ");
+        System.out.println("Martijn Eisses");
+        System.out.println("Hein Douwe Havik");
+        System.out.println("Martijn Hofstra");
     }
 
     //Print het menu.
