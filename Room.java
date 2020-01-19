@@ -37,4 +37,10 @@ public class Room {
         int number = roomNumber;
         return number;
     }
+
+    public int getRoomNumberByDoor(String number ){
+        Door useDoor = doors.get(number);
+        int roomNumberByDoor = useDoor.getRoomNumber();
+        return roomNumberByDoor;
+    }
 }

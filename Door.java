@@ -23,4 +23,8 @@ public class Door {
         return description;
     }
 
+    public int getRoomNumber(){
+        return roomNumber;
+    }
+
 }

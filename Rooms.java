@@ -37,11 +37,11 @@ public class Rooms {
             } else if (input.equals("what room am i in?")) {
                 checkRoom();
             } else if (input.equals("open door one")) {
-                if (currentRoom.getRoomNumber() == 5) {
-                    System.out.println("You are in the final room!");
-                } else {
-                    nextRoom();
-                }
+                nextRoom("1");
+            } else if (input.equals("open door two")) {
+                nextRoom("2");
+            } else if (input.equals("open door three")) {
+                nextRoom("3");
             } else if (input.equals("how many doors are there?")) {
                 int numberOfDoors = currentRoom.getDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
@@ -124,10 +124,13 @@ public class Rooms {
 
     }
 
-    public void nextRoom() {
+    public void nextRoom(String number) {
 
+        int roomNumber = one.getRoomNumberByDoor(number);
+        String roomNumberToString = String.valueOf(roomNumber);
+        currentRoom = roomsMap.get(roomNumberToString);
         
-
+        System.out.println("You are now in: " + currentRoom.getRoom());
         System.out.println("items in this room are:");
         inventory.GetItemsInRoom(currentRoom.getRoomNumber());
     }
