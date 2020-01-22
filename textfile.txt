@@ -1,5 +1,5 @@
 0-You can't carry so much with you. Consider dropping something.
-1-Room is closed.
+1-That room is closed.
 2-Welcome to the game!
 3-You don't know how you got into this mess..
 4-But you sure do know that you want to get out of here as soon as possible!
@@ -8,3 +8,32 @@
 7-You can drop items from your inventory by typing: drop [item]
 8-You can use items by typing: use [itemname] at [where you want to use it]
 9-You're able to shut down the game at anytime by typing: quit
+10-This is a large barn....
+11-It looks like it has been abandoned for ages
+12-There are some gardening tools against the wall next to you
+13-Above you is a giant hole in the roof with spiderwebs across it
+14-The ground is covered in straw
+15-The stalls haven't been used in years
+16-There are puddles in the stalls
+17-and there seems to be a crowbar in one of them
+18-Someone left a rope on the wall
+19-A bird is watching you from across the room
+20-There is a giant desk in this room
+21-The light on the desk seems to have been broken
+22-There is a sofa and it looks like the mice in it are loving it
+23-This kitchen seems to be in great condition! How strange....
+24-Has someone been here?!
+25-The kitchentable has some cutlery and plates neatly organized on in
+26-There seems to be a key laying on the table
+27-It's rather dark and cold in here
+28-I don't think that the mice here are enjoying my company...
+29-Maybe I should leave them alone
+30-This room is so dark I can't see a thing
+31-Maybe that flashlight that i saw can help me
+32-You turn on the flashlight
+33-This room looks empty apart from the window closed off with planks there isn't much to see here
+34-Maybe you could break the planks covering the window
+35-You broke the planks! Finaly a way out!
+36-You escaped! Nice!!
+37-We hope that you've enjoyed the game :)
+38-That doesn't seem to do anything

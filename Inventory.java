@@ -87,7 +87,7 @@ public class Inventory {
     // Creates a random roomnumber for items (between 0(incl.) and 6(excl.))
     private int RandomizeRoom() {
         Random random = new Random();
-        return random.nextInt(6) + 1;
+        return random.nextInt(6);
     }
 
     // Creates all the valuable items that the player needs to finish the game
@@ -107,14 +107,16 @@ public class Inventory {
         allItems.add(pen);
         Item hammer = new Item("Hammer", 2, RandomizeRoom());
         allItems.add(hammer);
-        Item rope = new Item("Rope", 2, RandomizeRoom());
+        Item rope = new Item("Rope", 2, 2);
         allItems.add(rope);
         Item ducttape = new Item("Duct tape", 1, RandomizeRoom());
         allItems.add(ducttape);
         Item radio = new Item("Radio", 3, RandomizeRoom());
         allItems.add(radio);
-        Item crate = new Item("Crate", 3, RandomizeRoom());
+        Item crate = new Item("Crate", 6, RandomizeRoom());
         allItems.add(crate);
+        Item plates = new Item("Plates", 2, 5);
+        allItems.add(plates);
     }
 
     public void GetItemsInRoom(int roomNumber) {
