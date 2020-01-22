@@ -12,26 +12,26 @@ public class Menu {
     }
 
     // clears the console
-    public void clearConsole() {
+    public void ClearConsole() {
         for (int i = 0; i < 1; i++)
             System.out.println();
     }
 
     // prints title... nodig voor method character info
-    public void printHeading(String title) {
+    public void PrintHeading(String title) {
         System.out.println(title);// prints a stringvalue
     }
 
     // Displays self-chosen playername
-    public void characterInfo() {
-        clearConsole();// clears console
-        printHeading("CHARACTER INFO");// uses method printheading to println
+    public void CharacterInfo() {
+        ClearConsole();// clears console
+        PrintHeading("CHARACTER INFO");// uses method printheading to println
         System.out.println("Je naam is: " + consolegame.name);// prints name of player
     }
 
     // Displays About section
-    public void aboutSection() {
-        clearConsole();// clears console
+    public void AboutSection() {
+        ClearConsole();// clears console
         System.out.println("Hallo" + consolegame.name + ", dit is welkom in de about section van deze game.");
         Credits();
         System.out.println("Deze Text Based Game is gemaakt in Java.");
@@ -39,8 +39,8 @@ public class Menu {
     }
 
     // Starts the game
-    public void continueJourney() {
-        consolegame.rooms.play();
+    public void ContinueJourney() {
+        consolegame.rooms.Play();
     }
 
     private void Credits() {
@@ -51,8 +51,8 @@ public class Menu {
     }
 
     // Displaying end of game
-    public void quitJourney() {
-        clearConsole();// clears console
+    public void QuitJourney() {
+        ClearConsole();// clears console
         System.out.println("Bedankt voor het spelen van de game.");
         System.out.println("Hopelijk heb je van de game genoten.");
         System.out.println("");
@@ -60,9 +60,9 @@ public class Menu {
     }
 
     // Prints menu.!!De continue journey moet nog worden toegevoegd.
-    public void printMenu() {
+    public void PrintMenu() {
         boolean correctInput = false;
-        clearConsole();// clears console
+        ClearConsole();// clears console
         System.out.println("Choose an action:");
         System.out.println("-------------------");
         System.out.println("(1) Start the game");// continue
@@ -72,18 +72,18 @@ public class Menu {
 
         while (correctInput == false) {
 
-            String input = reader.getInput().toLowerCase();
+            String input = reader.GetInput().toLowerCase();
             if (input.equals("1")) {
-                continueJourney();// wanneer "1" de console in word gestuurd word de methode continueJourney()
+                ContinueJourney();// wanneer "1" de console in word gestuurd word de methode continueJourney()
                 correctInput = true; // aangeroepen
             } else if (input.equals("2")) {
-                characterInfo();// wanneer "2" de console in word gestuurd word de methode characterinfo()
+                CharacterInfo();// wanneer "2" de console in word gestuurd word de methode characterinfo()
                 correctInput = true; // aangeroepen
             } else if (input.equals("3")) {
-                quitJourney();// wanneer "3" de console in word gestuurd word de methode quitJourney()
+                QuitJourney();// wanneer "3" de console in word gestuurd word de methode quitJourney()
                 correctInput = true; // aangeroepen
             } else if (input.equals("4")) {
-                aboutSection();// wanneer "4" de console in word gestuurd word de methode aboutSection()
+                AboutSection();// wanneer "4" de console in word gestuurd word de methode aboutSection()
                 correctInput = true; // aangeroepen
             } else {
                 System.out.println(input + " is an incorrect input. Please try again");

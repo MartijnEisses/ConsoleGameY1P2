@@ -23,14 +23,12 @@ public class Inventory {
     public void ShowInventory() {
         int weight = 0;
         System.out.println("==============Inventory==============");
-        int pos = 0;
         for (Item item : inventory) {
-            System.out.println("  " + "[" + pos + "] " + item.GetName() + " weighs: " + item.GetWeigth());
+            System.out.println("  " + item.GetName() + " weighs: " + item.GetWeigth());
             weight += item.GetWeigth();
-            pos++;
         }
         System.out.println("=====================================");
-        System.out.println("  Carrying: " + weight + " out of " + strength);
+        System.out.println("  Carrying: " + weight + "kg out of " + strength + "kg");
         System.out.println("");
     }
 
@@ -39,56 +37,67 @@ public class Inventory {
     // If it is too heavy the player can't pick it up
     public void AddItemToInventory(String itemName, int roomNumber) {
         Iterator<Item> it = allItems.iterator();
+        Item takenItem = new Item("a", -1, 0);
         while (it.hasNext()) {
+            Item item = it.next();
             // Checks if there is an item with that name and if it's in the current room
-            if (it.next().GetName().equals(itemName) && it.next().GetRoomNumber() == roomNumber) {
-                Item temp = it.next();
-                // Gets the current weight in the inventory
-                int weight = 0;
-                for (Item invItem : inventory) {
-                    weight += invItem.GetWeigth();
-                }
-                // Cant add the item because the player isn't strong enough
-                if (weight + temp.GetWeigth() > strength) {
-                    System.out.println(lines.GetLine(0));
-                }
-                // Can add the item
-                else {
-                    inventory.add(temp);
-                    allItems.remove(temp);
-                    ShowInventory();
+            if (item.GetName().toLowerCase().equals(itemName)) {
+                if (item.GetRoomNumber() == roomNumber) {
+                    takenItem = item;
+                    // Gets the current weight in the inventory
+                    int weight = 0;
+                    for (Item invItem : inventory) {
+                        weight += invItem.GetWeigth();
+                    }
+                    // Cant add the item because the player isn't strong enough
+                    if (weight + item.GetWeigth() > strength) {
+                        System.out.println(lines.GetLine(0));
+                        return;
+                    }
+                    // Can add the item
+                    else {
+                        inventory.add(item);
+                        ShowInventory();
+                    }
                 }
             }
         }
+        allItems.remove(takenItem);
     }
 
     public void RemoveItemFromInventory(String itemName, int roomNumber) {
         Iterator<Item> it = inventory.iterator();
+        Item droppedItem = new Item("a", -1, 0);
+        boolean droppedAnItem = false;
         while (it.hasNext()) {
-            if (it.next().GetName().equals(itemName)) {
-                Item temp = it.next();
-                temp.SetRoomNumber(roomNumber);
-                allItems.add(temp);
-                inventory.remove(temp);
-                System.out.print("Dropped " + temp.GetName());
+            Item item = it.next();
+            if (item.GetName().toLowerCase().equals(itemName)) {
+                droppedItem = item;
+                item.SetRoomNumber(roomNumber);
+                allItems.add(item);
+                System.out.print("Dropped " + item.GetName());
+                droppedAnItem = true;
             }
+        }
+        if (droppedAnItem) {
+            inventory.remove(droppedItem);
         }
     }
 
     // Creates a random roomnumber for items (between 0(incl.) and 6(excl.))
     private int RandomizeRoom() {
         Random random = new Random();
-        return random.nextInt(6);
+        return random.nextInt(6) + 1;
     }
 
     // Creates all the valuable items that the player needs to finish the game
     // These are all placed in a set room to make the playthrough easier
     private void CreateValuableItems() {
-        Item crowbar = new Item("Crowbar", 5, 1);
+        Item crowbar = new Item("Crowbar", 5, 2);
         allItems.add(crowbar);
-        Item flashlight = new Item("Flashlight", 2, 0);
+        Item flashlight = new Item("Flashlight", 2, 1);
         allItems.add(flashlight);
-        Item key = new Item("Key", 1, 3);
+        Item key = new Item("Key", 1, 4);
         allItems.add(key);
     }
 

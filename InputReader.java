@@ -8,7 +8,7 @@ public class InputReader {
         reader = new Scanner(System.in);
     }
 
-    public String getInput() {
+    public String GetInput() {
         System.out.print("> ");
         String inputLine = reader.nextLine();
         return inputLine;

@@ -14,9 +14,8 @@ public class consolegame {
     // }
 
     public static void main(String[] args) {
-        Inventory inventory = new Inventory();
         Menu menu = new Menu();
         rooms = new Rooms();
-        menu.printMenu();
+        menu.PrintMenu();
     }
 }

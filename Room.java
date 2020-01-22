@@ -5,7 +5,7 @@ public class Room {
 
     private String description;
     private int roomNumber;
-    private HashMap<String, Door> doors;
+    private HashMap<Integer, Door> doors;
 
     public Room(int number, String description) {
         this.description = description;
@@ -13,34 +13,36 @@ public class Room {
         doors = new HashMap<>();
     }
 
-    public void setDoor(String number, Door door) {
+    public void SetDoor(int number, Door door) {
         doors.put(number, door);
     }
 
-    public int getDoors(){
-        int numberOfDoors = doors.size(); 
+    public int GetDoors() {
+        int numberOfDoors = doors.size();
         return numberOfDoors;
     }
 
-    public String getDoorDescription(String number){
-        Door useDoor = doors.get(number);
-        String doorDesc = useDoor.getDescription();
-        return doorDesc;
+    public String GetDoorDescription(int number) {
+        if (doors.containsKey(number)) {
+            return "Door " + number + ": " + doors.get(number).GetDescription();
+        } else {
+            return "That door doesn't exist";
+        }
     }
 
-    public String getRoom() {
+    public String GetRoom() {
         String roomName = description;
         return roomName;
     }
 
-    public int getRoomNumber() {
+    public int GetRoomNumber() {
         int number = roomNumber;
         return number;
     }
 
-    public int getRoomNumberByDoor(String number ){
+    public int GetRoomNumberByDoor(int number) {
         Door useDoor = doors.get(number);
-        int roomNumberByDoor = useDoor.getRoomNumber();
+        int roomNumberByDoor = useDoor.GetRoomNumber();
         return roomNumberByDoor;
     }
 }

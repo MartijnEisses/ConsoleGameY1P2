@@ -6,24 +6,26 @@ public class Door {
     private boolean isUnlocked;
     private int roomNumber;
 
-    public Door(int number, int numberTwo, String desc, Boolean unlocked ){
-
-        doorNumber = number;
+    public Door(int doorNumber, int roomNumber, String desc, Boolean unlocked) {
+        this.doorNumber = doorNumber;
         description = desc;
         isUnlocked = unlocked;
-        roomNumber = numberTwo;
-
+        this.roomNumber = roomNumber;
     }
 
-    public void unlockDoor(){
+    public void UnlockDoor() {
         isUnlocked = true;
     }
 
-    public String getDescription(){
+    public boolean IsUnlocked() {
+        return isUnlocked;
+    }
+
+    public String GetDescription() {
         return description;
     }
 
-    public int getRoomNumber(){
+    public int GetRoomNumber() {
         return roomNumber;
     }
 
