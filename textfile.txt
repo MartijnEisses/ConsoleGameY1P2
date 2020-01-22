@@ -4,6 +4,7 @@
 3-You don't know how you got into this mess..
 4-But you sure do know that you want to get out of here as soon as possible!
 5-If doors are unlocked you're able to open them by typing: open door [doornumber]
-6-You can take a closer look at thing by typing: take a look at [item/place]
-7-You can use items by typing: use [itemname] at [where you want to use it]
-8-You're able to shut down the game at anytime by typing: quit
+6-You can take items with you by typing: take [item]
+7-You can drop items from your inventory by typing: drop [item]
+8-You can use items by typing: use [itemname] at [where you want to use it]
+9-You're able to shut down the game at anytime by typing: quit

@@ -6,7 +6,7 @@ public class Rooms {
     private HashMap<String, Room> roomsMap;
     private TextFromFile lines;
     private Inventory inventory;
-    private Room one, two, three, four, five, six ;
+    private Room one, two, three, four, five, six;
 
     public Rooms() {
         reader = new InputReader();
@@ -45,18 +45,24 @@ public class Rooms {
             } else if (input.equals("how many doors are there?")) {
                 int numberOfDoors = currentRoom.getDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
-            } else if (input.equals("where does door one lead?")){
+            } else if (input.equals("where does door one lead?")) {
 
                 getDoorDescription("1");
 
-            } else if (input.equals("where does door two lead?")){
+            } else if (input.equals("where does door two lead?")) {
 
                 getDoorDescription("2");
-                
-            } else if (input.equals("where does door three lead?")){
+
+            } else if (input.equals("where does door three lead?")) {
 
                 getDoorDescription("3");
-                
+
+            } else if (input.startsWith("take")) {
+                input.replace("take ", "");
+                TakeItem(input);
+            } else if (input.startsWith("drop")) {
+                input.replace("drop ", "");
+                DropItem(input);
             } else {
                 Help();
             }
@@ -65,6 +71,14 @@ public class Rooms {
     }
 
     public void chooseDoor(int doorNumber) {
+    }
+
+    private void TakeItem(String itemName) {
+        inventory.AddItemToInventory(itemName, currentRoom.getRoomNumber());
+    }
+
+    private void DropItem(String itemName) {
+        inventory.RemoveItemFromInventory(itemName, currentRoom.getRoomNumber());
     }
 
     private void Help() {
@@ -100,9 +114,9 @@ public class Rooms {
 
     }
 
-    public void setDoors(){
+    public void setDoors() {
 
-        //Set doors for the different rooms
+        // Set doors for the different rooms
         Door roomOneDoorOne = new Door(1, 2, "This door leads to the stalls", true);
         Door roomOneDoorTwo = new Door(2, 3, "This door leads to the work room", true);
         Door roomOntDoorThree = new Door(2, 6, "Find the key to unlock this door!", false);
@@ -117,7 +131,7 @@ public class Rooms {
         System.out.println(roomName);
     }
 
-    public void getDoorDescription(String number){
+    public void getDoorDescription(String number) {
 
         String useDoorDescr = currentRoom.getDoorDescription(number);
         System.out.println(useDoorDescr);
@@ -129,7 +143,7 @@ public class Rooms {
         int roomNumber = one.getRoomNumberByDoor(number);
         String roomNumberToString = String.valueOf(roomNumber);
         currentRoom = roomsMap.get(roomNumberToString);
-        
+
         System.out.println("You are now in: " + currentRoom.getRoom());
         System.out.println("items in this room are:");
         inventory.GetItemsInRoom(currentRoom.getRoomNumber());

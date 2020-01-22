@@ -37,32 +37,41 @@ public class Inventory {
     // Adds an item to the inventory and removes it from the allItems list when the
     // player picks it up
     // If it is too heavy the player can't pick it up
-    public void AddItemToInventory(Item item) {
-
-        int weight = 0;
-        for (Item invItem : inventory) {
-            weight += invItem.GetWeigth();
-        }
-        // Cant add the item because the player isn't strong enough
-        if (weight + item.GetWeigth() > strength) {
-            System.out.println(lines.GetLine(0));
-        } else {
-            inventory.add(item);
-            allItems.remove(item);
-            ShowInventory();
+    public void AddItemToInventory(String itemName, int roomNumber) {
+        Iterator<Item> it = allItems.iterator();
+        while (it.hasNext()) {
+            // Checks if there is an item with that name and if it's in the current room
+            if (it.next().GetName().equals(itemName) && it.next().GetRoomNumber() == roomNumber) {
+                Item temp = it.next();
+                // Gets the current weight in the inventory
+                int weight = 0;
+                for (Item invItem : inventory) {
+                    weight += invItem.GetWeigth();
+                }
+                // Cant add the item because the player isn't strong enough
+                if (weight + temp.GetWeigth() > strength) {
+                    System.out.println(lines.GetLine(0));
+                }
+                // Can add the item
+                else {
+                    inventory.add(temp);
+                    allItems.remove(temp);
+                    ShowInventory();
+                }
+            }
         }
     }
 
-    public void RemoveItemFromInventory(int itemNumber, int roomNumber) {
-        if (itemNumber < 0 || itemNumber > inventory.size()) {
-            System.out.println("Item does not exist");
-        } else {
-            // Add it to the allItems with the updated roomnumber
-            Item temp = inventory.get(itemNumber);
-            temp.SetRoomNumber(roomNumber);
-            allItems.add(temp);
-            // Remove it from the inventory
-            inventory.remove(itemNumber);
+    public void RemoveItemFromInventory(String itemName, int roomNumber) {
+        Iterator<Item> it = inventory.iterator();
+        while (it.hasNext()) {
+            if (it.next().GetName().equals(itemName)) {
+                Item temp = it.next();
+                temp.SetRoomNumber(roomNumber);
+                allItems.add(temp);
+                inventory.remove(temp);
+                System.out.print("Dropped " + temp.GetName());
+            }
         }
     }
 
