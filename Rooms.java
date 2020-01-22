@@ -27,6 +27,8 @@ public class Rooms {
         System.out.println(lines.GetLine(6));
         System.out.println(lines.GetLine(7));
         System.out.println(lines.GetLine(8));
+        System.out.println(lines.GetLine(9));
+
         boolean finished = false;
 
         while (!finished) {
