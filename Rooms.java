@@ -62,11 +62,11 @@ public class Rooms {
             } else if (input.equals("how many doors are there?")) {
                  int numberOfDoors = currentRoom.GetDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
-            } else if (input.equals("where does door one lead?")) {
+            } else if (input.equals("where does door 1 lead?")) {
                 GetDoorDescription(1);
-            } else if (input.equals("where does door two lead?")) {
+            } else if (input.equals("where does door 2 lead?")) {
                 GetDoorDescription(2);
-            } else if (input.equals("where does door three lead?")) {
+            } else if (input.equals("where does door 3 lead?")) {
                 GetDoorDescription(3);
             } else if (input.contains("take")) {
                  String temp = input.replace("take ", "");
