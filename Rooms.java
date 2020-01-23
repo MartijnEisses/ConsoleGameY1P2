@@ -1,12 +1,18 @@
 import java.util.HashMap;
+import java.util.Stack;
 
 public class Rooms {
-    private Room currentRoom;
+    private Room currentRoom;<<<<<<<HEAD
     private InputReader reader;
     private HashMap<String, Room> roomsMap;
     private TextFromFile lines;
-    private Inventory inventory;
+    private Inventory inventory;=======
+    private InputReader reader;
+    private HashMap<String, Room> roomsMap;
+    private TextFromFile lines;
+    private Inventory inventory;>>>>>>>8 c007932904383b7fedfb3392a78ea148f48fd72
     private Room one, two, three, four, five, six;
+    private Stack<Room> kamer;
 
     public Rooms() {
         reader = new InputReader();
@@ -77,6 +83,8 @@ public class Rooms {
                 DropItem(temp);
             } else if (input.equals("show inventory")) {
                 inventory.ShowInventory();
+            } else if (input.equals("back")) {
+                back();
             } else if (input.contains("use")) {
                 String temp = input.replace("use ", "");
                 UseItemOnObject(temp);
@@ -163,12 +171,21 @@ public class Rooms {
 
     public void SetDoors() {
         // All the doors needed to get to each room
+<<<<<<< HEAD
         Door doorOne = new Door(1, 2, "This door leads to the stalls", true);
         Door doorTwo = new Door(2, 3, "This door leads to the work room", true);
         Door doorThree = new Door(3, 6, "This door leads to a dark room", false);
         Door doorFour = new Door(4, 1, "This door leads to the barn", true);
         Door doorFive = new Door(5, 4, "This door leads to the kitchen", true);
         Door doorSix = new Door(6, 5, "This hatch leads to a space under the kitchen", true);
+=======
+         Door doorOne = new Door(1, 2, "This door leads to the stalls", true);
+         Door doorTwo = new Door(2, 3, "This door leads to the work room", true);
+         Door doorThree = new Door(3, 6, "This door leads to a dark room", false);
+         Door doorFour = new Door(4, 1, "This door leads to the barn", true);
+         Door doorFive = new Door(5, 4, "This door leads to the kitchen", true);
+         Door doorSix = new Door(6, 5, "This hatch leads to a space under the kitchen", true);
+>>>>>>> 8c007932904383b7fedfb3392a78ea148f48fd72
 
         // Set doors for the different room
         one.SetDoor(1, doorOne);
@@ -214,6 +231,13 @@ public class Rooms {
         } else if (number == 2) {
             currentRoom = four;
             CheckRoom();
+        }
+    }
+
+    public void back() {
+        if (kamer != null) {
+            currentRoom = kamer.pop();
+            System.out.println(currentRoom = roomsMap.get());
         }
     }
 
