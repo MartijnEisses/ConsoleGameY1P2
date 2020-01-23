@@ -6,7 +6,7 @@
 5-If doors are unlocked you're able to open them by typing: open door [doornumber]
 6-You can take items with you by typing: take [item]
 7-You can drop items from your inventory by typing: drop [item]
-8-You can use items by typing: use [itemname] at [where you want to use it]
+8-You can use items by typing: use [itemname] on [where you want to use it on]
 9-You're able to shut down the game at anytime by typing: quit
 10-This is a large barn....
 11-It looks like it has been abandoned for ages
@@ -39,4 +39,8 @@
 38-That doesn't seem to do anything
 39-WASTED! - You can't go up here...
 40-WASTED! - You can't go down here...
-41-That doesn't seem to do anything
+41-You do not have that item on you at the moment
+42-You can go up or down at any time by typing: go [up/down] but be carefull...
+43-If you forgot what room you curently are in try typing: what room am i in
+44-Want to know how many doors there are? Try typing: how many doors are there
+45-Want to knwo what you are carrying at the moment? type: show inventory

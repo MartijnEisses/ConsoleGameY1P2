@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Stack;
+import java.util.*;
 
 public class Rooms {
     private Room currentRoom;
@@ -26,12 +27,7 @@ public class Rooms {
         System.out.println(lines.GetLine(2));
         System.out.println(lines.GetLine(3));
         System.out.println(lines.GetLine(4));
-        System.out.println(lines.GetLine(5));
-        System.out.println(lines.GetLine(6));
-        System.out.println(lines.GetLine(7));
-        System.out.println(lines.GetLine(8));
-        System.out.println(lines.GetLine(9));
-
+        Help();
         boolean finished = false;
         CheckRoom();
         while (!finished) {
@@ -40,7 +36,7 @@ public class Rooms {
 
             if (input.equals("quit")) {
                 finished = true;
-            } else if (input.equals("what room am i in?")) {
+            } else if (input.equals("what room am i in")) {
                 CheckRoom();
             } else if (input.equals("open door 1")) {
                 NextRoom(1);
@@ -62,7 +58,7 @@ public class Rooms {
                 } else {
                     trapDoorFunction(2);
                 }
-            } else if (input.equals("how many doors are there?")) {
+            } else if (input.equals("how many doors are there")) {
                 int numberOfDoors = currentRoom.GetDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
             } else if (input.equals("where does door 1 lead?")) {
@@ -93,28 +89,48 @@ public class Rooms {
     }
 
     private void UseItemOnObject(String input) {
-
         String[] splitted = input.split(" on ");
-
-        if (splitted[0].equals("key")) {
-            if (currentRoom.GetRoomNumber() == 1) {
-                if (splitted[1].equals("lock")) {
-                    one.SetDoor(1, new Door(3, 6, "This door leads to a dark room", true));
-                }
+        boolean inInventory = false;
+        Iterator<Item> it = inventory.GetInventory().iterator();
+        while (it.hasNext()) {
+            Item item = it.next();
+            // Checks if there is an item with that name in the users inventory
+            if (item.GetName().toLowerCase().equals(splitted[0])) {
+                inInventory = true;
             }
-        } else if (currentRoom.GetRoomNumber() == 6) {
-            if (splitted[0].equals("flashlight")) {
-                if (splitted[1].equals("room")) {
-                    System.out.println(lines.GetLine(32));
-                    six = new Room(6, "Room 6 - Empty room", new int[] { 33, 34 });
-                    one.SetDoor(1, new Door(3, 6, "This door leads the room with a boarded window", true));
+        }
+        if (inInventory) {
+
+            if (splitted[0].equals("key")) {
+                if (currentRoom.GetRoomNumber() == 1) {
+                    if (splitted[1].equals("lock")) {
+                        one.SetDoor(3, new Door(3, 6, "This door leads to a dark room", true));
+                        inventory.DestroyItem(splitted[0]);
+                    }
                 }
-            } else if (splitted[0].equals("crowbar")) {
-                if (splitted[1].equals("window")) {
-                    System.out.println(lines.GetLine(35));
-                    System.out.println(lines.GetLine(36));
-                    System.out.println(lines.GetLine(37));
+            } else if (currentRoom.GetRoomNumber() == 6) {
+                if (splitted[0].equals("flashlight")) {
+                    if (splitted[1].equals("room")) {
+                        System.out.println(lines.GetLine(32));
+                        six.SetRoomDescription("Room 6 - Empty room");
+                        one.SetDoor(3, new Door(3, 6, "This door leads a room with a boarded window", true));
+                        inventory.DestroyItem(splitted[0]);
+                    }
+                } else if (splitted[0].equals("crowbar")) {
+                    if (splitted[1].equals("window")) {
+                        System.out.println(lines.GetLine(35));
+                        System.out.println(lines.GetLine(36));
+                        System.out.println(lines.GetLine(37));
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                        }
+                        System.exit(0);
+                    }
                 }
+            } else {
+                System.out.println(lines.GetLine(38));
             }
         } else {
             System.out.println(lines.GetLine(41));
@@ -134,6 +150,11 @@ public class Rooms {
         System.out.println(lines.GetLine(6));
         System.out.println(lines.GetLine(7));
         System.out.println(lines.GetLine(8));
+        System.out.println(lines.GetLine(9));
+        System.out.println(lines.GetLine(42));
+        System.out.println(lines.GetLine(43));
+        System.out.println(lines.GetLine(44));
+        System.out.println(lines.GetLine(45));
     }
 
     private void SetRooms() {
@@ -144,7 +165,7 @@ public class Rooms {
         three = new Room(3, "Room 3 - Work room", new int[] { 20, 21, 22 });
         four = new Room(4, "Room 4 - Kitchen", new int[] { 23, 24, 25, 26 });
         five = new Room(5, "Room 5 - Trapdoor Kitchen", new int[] { 27, 28, 29 });
-        six = new Room(6, "Room 6 - Empty room", new int[] { 30, 31 });
+        six = new Room(6, "Room 6 - Dark room", new int[] { 30, 31 });
         currentRoom = one;
     }
 
@@ -194,8 +215,9 @@ public class Rooms {
     public void CheckRoom() {
         System.out.println("\n" + GetRoomInformation());
         for (Integer line : currentRoom.GetRoomLines()) {
-            lines.GetLine(line);
+            System.out.println(lines.GetLine(line));
         }
+        System.out.println("\n");
         CheckItemsInRoom();
     }
 

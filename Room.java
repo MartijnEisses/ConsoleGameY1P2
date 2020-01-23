@@ -24,6 +24,10 @@ public class Room {
         return numberOfDoors;
     }
 
+    public void SetRoomDescription(String i) {
+        description = i;
+    }
+
     public boolean checkDoorunlock(int doorNumber) {
         Door thisDoor = doors.get(doorNumber);
         boolean unlocked = thisDoor.IsUnlocked();

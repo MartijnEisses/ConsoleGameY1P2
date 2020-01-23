@@ -75,12 +75,27 @@ public class Inventory {
                 droppedItem = item;
                 item.SetRoomNumber(roomNumber);
                 allItems.add(item);
-                System.out.print("Dropped " + item.GetName());
+                System.out.print("Dropped " + item.GetName() + "\n");
                 droppedAnItem = true;
             }
         }
         if (droppedAnItem) {
             inventory.remove(droppedItem);
+        }
+    }
+
+    public void DestroyItem(String itemName) {
+        Iterator<Item> it = inventory.iterator();
+        boolean destroy = false;
+        Item i = new Item("", 0, 0);
+        while (it.hasNext()) {
+            i = it.next();
+            if (i.GetName().toLowerCase().equals(itemName)) {
+                destroy = true;
+            }
+        }
+        if (destroy) {
+            inventory.remove(i);
         }
     }
 
@@ -125,5 +140,9 @@ public class Inventory {
                 System.out.println("-  " + item.GetName());
             }
         }
+    }
+
+    public List<Item> GetInventory() {
+        return inventory;
     }
 }

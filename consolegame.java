@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class consolegame {
-    public static String name;
     static Scanner scanner = new Scanner(System.in);
     public static Rooms rooms;
     public static TextFromFile textFromFile;

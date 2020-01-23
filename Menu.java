@@ -11,31 +11,22 @@ public class Menu {
         reader = new InputReader();
     }
 
-    // clears the console
-    public void ClearConsole() {
-        for (int i = 0; i < 1; i++)
-            System.out.println();
-    }
-
     // prints title... nodig voor method character info
     public void PrintHeading(String title) {
         System.out.println(title);// prints a stringvalue
     }
 
-    // Displays self-chosen playername
-    public void CharacterInfo() {
-        ClearConsole();// clears console
-        PrintHeading("CHARACTER INFO");// uses method printheading to println
-        System.out.println("Je naam is: " + consolegame.name);// prints name of player
-    }
-
     // Displays About section
     public void AboutSection() {
-        ClearConsole();// clears console
-        System.out.println("Hallo" + consolegame.name + ", dit is welkom in de about section van deze game.");
         Credits();
-        System.out.println("Deze Text Based Game is gemaakt in Java.");
-        System.out.println("Deze game is gemaakt in blok 2 van jaar 1.");
+        System.out.println("This textbased game was created in java");
+        System.out.println("and was created in the second period of the first year");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        PrintMenu();
     }
 
     // Starts the game
@@ -43,8 +34,8 @@ public class Menu {
         consolegame.rooms.Play();
     }
 
-    private void Credits() {
-        System.out.println("Deze game is gemaakt door: ");
+    private static void Credits() {
+        System.out.println("This game was made by: ");
         System.out.println("Martijn Eisses");
         System.out.println("Hein Douwe Havik");
         System.out.println("Martijn Hofstra");
@@ -52,23 +43,22 @@ public class Menu {
 
     // Displaying end of game
     public void QuitJourney() {
-        ClearConsole();// clears console
-        System.out.println("Bedankt voor het spelen van de game.");
-        System.out.println("Hopelijk heb je van de game genoten.");
-        System.out.println("");
         Credits();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     // Prints menu.!!De continue journey moet nog worden toegevoegd.
     public void PrintMenu() {
         boolean correctInput = false;
-        ClearConsole();// clears console
         System.out.println("Choose an action:");
         System.out.println("-------------------");
         System.out.println("(1) Start the game");// continue
-        System.out.println("(2) Character Info");// info
+        System.out.println("(2) About");// about
         System.out.println("(3) Exit Game");// quit
-        System.out.println("(4) About");// about
 
         while (correctInput == false) {
 
@@ -77,13 +67,10 @@ public class Menu {
                 ContinueJourney();// wanneer "1" de console in word gestuurd word de methode continueJourney()
                 correctInput = true; // aangeroepen
             } else if (input.equals("2")) {
-                CharacterInfo();// wanneer "2" de console in word gestuurd word de methode characterinfo()
+                AboutSection();
                 correctInput = true; // aangeroepen
             } else if (input.equals("3")) {
                 QuitJourney();// wanneer "3" de console in word gestuurd word de methode quitJourney()
-                correctInput = true; // aangeroepen
-            } else if (input.equals("4")) {
-                AboutSection();// wanneer "4" de console in word gestuurd word de methode aboutSection()
                 correctInput = true; // aangeroepen
             } else {
                 System.out.println(input + " is an incorrect input. Please try again");
