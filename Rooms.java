@@ -8,13 +8,14 @@ public class Rooms {
     private  TextFromFile lines;
     private  Inventory inventory;
     private Room one, two, three, four, five, six;
-    private Stack <Room>kamer;
+    private Stack <Integer>roomStacks;
 
     public Rooms() {
         reader = new InputReader();
         roomsMap = new HashMap<>();
         lines = new TextFromFile();
         inventory = new Inventory();
+        roomStacks = new Stack<>();
         SetRooms();
         AddToMap();
         SetDoors();
@@ -190,10 +191,12 @@ public class Rooms {
 
     public void back()
     {
-       if(kamer != null) 
-       {
-           currentRoom = kamer.pop();
-           System.out.println(currentRoom = roomsMap.get());
+       if(roomStacks.empty() != true) {
+           int thisRoomNumber = roomStacks.pop();
+           currentRoom = roomsMap.get(String.valueOf(thisRoomNumber));
+           CheckRoom();
+       } else {
+           System.out.println("You can't go back!");
        }
     }
 
@@ -208,8 +211,10 @@ public class Rooms {
             }
         } else {
             if(currentRoom.checkDoorunlock(number) == true){
-                 int roomNumber = currentRoom.GetRoomNumberByDoor(number);
-                 String roomNumberToString = String.valueOf(roomNumber);
+                int test = currentRoom.GetRoomNumber();
+                roomStacks.push(test);
+                int roomNumber = currentRoom.GetRoomNumberByDoor(number);
+                String roomNumberToString = String.valueOf(roomNumber);
                 currentRoom = roomsMap.get(roomNumberToString);
                 CheckRoom();
             } else {
