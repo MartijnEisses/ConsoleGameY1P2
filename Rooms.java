@@ -3,12 +3,12 @@ import java.util.Stack;
 
 public class Rooms {
     private Room currentRoom;
-    private  InputReader reader;
-    private  HashMap<String, Room> roomsMap;
-    private  TextFromFile lines;
-    private  Inventory inventory;
+    private InputReader reader;
+    private HashMap<String, Room> roomsMap;
+    private TextFromFile lines;
+    private Inventory inventory;
     private Room one, two, three, four, five, six;
-    private Stack <Integer>roomStacks;
+    private Stack<Integer> roomStacks;
 
     public Rooms() {
         reader = new InputReader();
@@ -49,21 +49,21 @@ public class Rooms {
             } else if (input.equals("open door 3")) {
                 NextRoom(3);
             } else if (input.equals("go down")) {
-                if(currentRoom != four){
+                if (currentRoom != four) {
                     System.out.println("WASTED! - You can't go down here...");
                     finished = true;
                 } else {
                     trapDoorFunction(1);
                 }
-            }  else if (input.equals("go up")) {
-                if(currentRoom != five){
+            } else if (input.equals("go up")) {
+                if (currentRoom != five) {
                     System.out.println("WASTED! - You can't go up here...");
                     finished = true;
                 } else {
                     trapDoorFunction(2);
                 }
             } else if (input.equals("how many doors are there?")) {
-                 int numberOfDoors = currentRoom.GetDoors();
+                int numberOfDoors = currentRoom.GetDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
             } else if (input.equals("where does door 1 lead?")) {
                 GetDoorDescription(1);
@@ -72,31 +72,60 @@ public class Rooms {
             } else if (input.equals("where does door 3 lead?")) {
                 GetDoorDescription(3);
             } else if (input.contains("take")) {
-                 String temp = input.replace("take ", "");
+                String temp = input.replace("take ", "");
                 System.out.println(temp);
                 TakeItem(temp);
             } else if (input.contains("drop")) {
-                 String temp = input.replace("drop ", "");
+                String temp = input.replace("drop ", "");
                 DropItem(temp);
             } else if (input.equals("show inventory")) {
                 inventory.ShowInventory();
-            } else if(input.equals("back")) {
+            } else if (input.equals("back")) {
                 back();
+            } else if (input.contains("use")) {
+                String temp = input.replace("use ", "");
+                UseItemOnObject(temp);
             } else {
                 Help();
             }
         }
-        System.out.println("Thanks for playing!");
+        lines.GetLine(37);
     }
 
-    public void ChooseDoor( int doorNumber) {
+    private void UseItemOnObject(String input) {
+
+        String[] splitted = input.split(" on ");
+
+        if (splitted[0].equals("key")) {
+            if (currentRoom.GetRoomNumber() == 1) {
+                if (splitted[1].equals("lock")) {
+                    one.SetDoor(1, new Door(3, 6, "This door leads to a dark room", true));
+                }
+            }
+        } else if (currentRoom.GetRoomNumber() == 6) {
+            if (splitted[0].equals("flashlight")) {
+                if (splitted[1].equals("room")) {
+                    System.out.println(lines.GetLine(32));
+                    six = new Room(6, "Room 6 - Empty room", new int[] { 33, 34 });
+                    one.SetDoor(1, new Door(3, 6, "This door leads the room with a boarded window", true));
+                }
+            } else if (splitted[0].equals("crowbar")) {
+                if (splitted[1].equals("window")) {
+                    System.out.println(lines.GetLine(35));
+                    System.out.println(lines.GetLine(36));
+                    System.out.println(lines.GetLine(37));
+                }
+            }
+        } else {
+            System.out.println(lines.GetLine(41));
+        }
     }
 
-    private void TakeItem( String itemName) {
+    private void TakeItem(String itemName) {
         inventory.AddItemToInventory(itemName, currentRoom.GetRoomNumber());
     }
 
-    private void DropItem( String itemName) {
+    private void DropItem(String itemName) {
         inventory.RemoveItemFromInventory(itemName, currentRoom.GetRoomNumber());
     }
 
@@ -110,15 +139,13 @@ public class Rooms {
     private void SetRooms() {
 
         // Rooms are created
-        one = new Room(1, "Room 1 - Barn");
-        two = new Room(2, "Room 2 - Stalls");
-        three = new Room(3, "Room 3 - Work room");
-        four = new Room(4, "Room 4 - Kitchen");
-        five = new Room(5, "Room 5 - Trapdoor Kitchen");
-        six = new Room(6, "Room 6 - Empty room");
-
+        one = new Room(1, "Room 1 - Barn", new int[] { 10, 11, 12, 13 });
+        two = new Room(2, "Room 2 - Stalls", new int[] { 14, 15, 16, 17, 18, 19 });
+        three = new Room(3, "Room 3 - Work room", new int[] { 20, 21, 22 });
+        four = new Room(4, "Room 4 - Kitchen", new int[] { 23, 24, 25, 26 });
+        five = new Room(5, "Room 5 - Trapdoor Kitchen", new int[] { 27, 28, 29 });
+        six = new Room(6, "Room 6 - Empty room", new int[] { 30, 31 });
         currentRoom = one;
-
     }
 
     private void AddToMap() {
@@ -135,12 +162,12 @@ public class Rooms {
 
     public void SetDoors() {
         // All the doors needed to get to each room
-         Door doorOne = new Door(1, 2, "This door leads to the stalls", true);
-         Door doorTwo = new Door(2, 3, "This door leads to the work room", true);
-         Door doorThree = new Door(3, 6, "This door leads to a dark room", false);
-         Door doorFour = new Door(4, 1, "This door leads to the barn", true);
-         Door doorFive = new Door(5, 4, "This door leads to the kitchen", true);
-         Door doorSix = new Door(6, 5, "This hatch leads to a space under the kitchen", true);
+        Door doorOne = new Door(1, 2, "This door leads to the stalls", true);
+        Door doorTwo = new Door(2, 3, "This door leads to the work room", true);
+        Door doorThree = new Door(3, 6, "This door leads to a dark room", false);
+        Door doorFour = new Door(4, 1, "This door leads to the barn", true);
+        Door doorFive = new Door(5, 4, "This door leads to the kitchen", true);
+        Door doorSix = new Door(6, 5, "This hatch leads to a space under the kitchen", true);
 
         // Set doors for the different room
         one.SetDoor(1, doorOne);
@@ -166,6 +193,9 @@ public class Rooms {
 
     public void CheckRoom() {
         System.out.println("\n" + GetRoomInformation());
+        for (Integer line : currentRoom.GetRoomLines()) {
+            lines.GetLine(line);
+        }
         CheckItemsInRoom();
     }
 
@@ -179,38 +209,37 @@ public class Rooms {
         inventory.GetItemsInRoom(currentRoom.GetRoomNumber());
     }
 
-    public void trapDoorFunction(int number){
-        if(number == 1){
+    public void trapDoorFunction(int number) {
+        if (number == 1) {
             currentRoom = five;
             CheckRoom();
-        } else if(number == 2){
+        } else if (number == 2) {
             currentRoom = four;
             CheckRoom();
         }
     }
 
-    public void back()
-    {
-       if(roomStacks.empty() != true) {
-           int thisRoomNumber = roomStacks.pop();
-           currentRoom = roomsMap.get(String.valueOf(thisRoomNumber));
-           CheckRoom();
-       } else {
-           System.out.println("You can't go back!");
-       }
+    public void back() {
+        if (roomStacks.empty() != true) {
+            int thisRoomNumber = roomStacks.pop();
+            currentRoom = roomsMap.get(String.valueOf(thisRoomNumber));
+            CheckRoom();
+        } else {
+            System.out.println("You can't go back!");
+        }
     }
 
-    public void NextRoom( int number) {
+    public void NextRoom(int number) {
 
-        if(currentRoom.GetDoors() < number){
+        if (currentRoom.GetDoors() < number) {
             int numberOfDoors = currentRoom.GetDoors();
-            if(numberOfDoors == 1){
+            if (numberOfDoors == 1) {
                 System.out.println("There is only: " + numberOfDoors + " door");
             } else {
                 System.out.println("There are only: " + numberOfDoors + " doors");
             }
         } else {
-            if(currentRoom.checkDoorunlock(number) == true){
+            if (currentRoom.checkDoorunlock(number) == true) {
                 int test = currentRoom.GetRoomNumber();
                 roomStacks.push(test);
                 int roomNumber = currentRoom.GetRoomNumberByDoor(number);
@@ -222,7 +251,7 @@ public class Rooms {
             }
 
         }
-        
+
     }
 
 }

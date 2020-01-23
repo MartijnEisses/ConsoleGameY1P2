@@ -6,10 +6,12 @@ public class Room {
     private String description;
     private int roomNumber;
     private HashMap<Integer, Door> doors;
+    private int[] roomLines;
 
-    public Room(int number, String description) {
+    public Room(int number, String description, int[] roomLines) {
         this.description = description;
         this.roomNumber = number;
+        this.roomLines = roomLines;
         doors = new HashMap<>();
     }
 
@@ -22,7 +24,7 @@ public class Room {
         return numberOfDoors;
     }
 
-    public boolean checkDoorunlock(int doorNumber){
+    public boolean checkDoorunlock(int doorNumber) {
         Door thisDoor = doors.get(doorNumber);
         boolean unlocked = thisDoor.IsUnlocked();
         return unlocked;
@@ -34,6 +36,10 @@ public class Room {
         } else {
             return "That door doesn't exist";
         }
+    }
+
+    public int[] GetRoomLines() {
+        return roomLines;
     }
 
     public String GetRoom() {
