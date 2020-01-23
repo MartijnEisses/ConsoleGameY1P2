@@ -37,3 +37,6 @@
 36-You escaped! Nice!!
 37-We hope that you've enjoyed the game :)
 38-That doesn't seem to do anything
+39-WASTED! - You can't go up here...
+40-WASTED! - You can't go down here...
+41-That doesn't seem to do anything
