@@ -22,6 +22,12 @@ public class Room {
         return numberOfDoors;
     }
 
+    public boolean checkDoorunlock(int doorNumber){
+        Door thisDoor = doors.get(doorNumber);
+        boolean unlocked = thisDoor.IsUnlocked();
+        return unlocked;
+    }
+
     public String GetDoorDescription(int number) {
         if (doors.containsKey(number)) {
             return "Door " + number + ": " + doors.get(number).GetDescription();
