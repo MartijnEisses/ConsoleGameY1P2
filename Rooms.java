@@ -39,12 +39,26 @@ public class Rooms {
                 finished = true;
             } else if (input.equals("what room am i in?")) {
                 CheckRoom();
-            } else if (input.equals("open door one")) {
+            } else if (input.equals("open door 1")) {
                 NextRoom(1);
-            } else if (input.equals("open door two")) {
+            } else if (input.equals("open door 2")) {
                 NextRoom(2);
-            } else if (input.equals("open door three")) {
+            } else if (input.equals("open door 3")) {
                 NextRoom(3);
+            } else if (input.equals("go down")) {
+                if(currentRoom != four){
+                    System.out.println("WASTED! - You can't go down here...");
+                    finished = true;
+                } else {
+                    trapDoorFunction(1);
+                }
+            }  else if (input.equals("go up")) {
+                if(currentRoom != five){
+                    System.out.println("WASTED! - You can't go up here...");
+                    finished = true;
+                } else {
+                    trapDoorFunction(2);
+                }
             } else if (input.equals("how many doors are there?")) {
                 final int numberOfDoors = currentRoom.GetDoors();
                 System.out.println("There are: " + numberOfDoors + " doors");
@@ -158,6 +172,16 @@ public class Rooms {
     private void CheckItemsInRoom() {
         System.out.println("items in this room are:");
         inventory.GetItemsInRoom(currentRoom.GetRoomNumber());
+    }
+
+    public void trapDoorFunction(int number){
+        if(number == 1){
+            currentRoom = five;
+            CheckRoom();
+        } else if(number == 2){
+            currentRoom = four;
+            CheckRoom();
+        }
     }
 
     public void NextRoom(final int number) {
