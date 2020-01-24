@@ -188,7 +188,6 @@ public class Rooms {
         Door doorThree = new Door(3, 6, "This door leads to a dark room", false);
         Door doorFour = new Door(4, 1, "This door leads to the barn", true);
         Door doorFive = new Door(5, 4, "This door leads to the kitchen", true);
-        Door doorSix = new Door(6, 5, "This hatch leads to a space under the kitchen", true);
 
         // Set doors for the different room
         one.SetDoor(1, doorOne);
@@ -198,8 +197,6 @@ public class Rooms {
         three.SetDoor(1, doorFour);
         three.SetDoor(2, doorFive);
         four.SetDoor(1, doorTwo);
-        four.SetDoor(2, doorSix);
-        five.SetDoor(1, doorFive);
         six.SetDoor(1, doorFour);
 
     }
