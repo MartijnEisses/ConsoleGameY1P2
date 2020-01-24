@@ -1,9 +1,0 @@
-Technical Notes
-
-Inventory werkt en we hebben een back funtie gemaakt.
-Ook kun je je item "gebruiken" in de game, een flashlight kun je bijvoorbeeld aanzetten.
-De items hebben ieder een apart gewicht.
-In de game hebben wij een functionaliteit waarmee je omhoog en naar beneden kunt, deze kun je niet overal gebruiken.
-Je kunt altijd stoppen met het spel door quit te typen.
-Sommige tekst uit de game word geladen uit een tekst bestand.
-Wij hebben sleutels verstopt, dit door een boolean te gebruiken.
